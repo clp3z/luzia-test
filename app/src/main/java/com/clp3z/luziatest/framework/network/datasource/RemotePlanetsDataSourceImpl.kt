@@ -7,6 +7,7 @@ import com.clp3z.luziatest.framework.network.service.PlanetsService
 import com.clp3z.luziatest.entity.toError
 import com.clp3z.luziatest.framework.network.toPlanet
 import com.clp3z.luziatest.common.tryCall
+import com.clp3z.luziatest.framework.network.toId
 
 import javax.inject.Inject
 
@@ -27,11 +28,11 @@ internal class RemotePlanetsDataSourceImpl @Inject constructor(
             }
         )
 
-    override suspend fun getPlanet(id: String): Either<Error, Planet> =
+    override suspend fun getPlanet(url: String): Either<Error, Planet> =
         tryCall(
             execute = {
                 planetsService
-                    .getPlanet(id)
+                    .getPlanetFromUrl(url)
                     .toPlanet()
             },
             toError = {

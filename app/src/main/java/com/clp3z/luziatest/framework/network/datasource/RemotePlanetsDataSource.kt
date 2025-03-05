@@ -8,5 +8,5 @@ interface RemotePlanetsDataSource {
 
     suspend fun getPlanets(page: Int): Either<Error, List<Planet>>
 
-    suspend fun getPlanet(id: String): Either<Error, Planet>
+    suspend fun getPlanet(url: String): Either<Error, Planet>
 }

@@ -4,7 +4,6 @@ import arrow.core.Either
 import com.clp3z.luziatest.entity.Error
 import com.clp3z.luziatest.entity.Planet
 import com.clp3z.luziatest.framework.network.datasource.RemotePlanetsDataSource
-import com.clp3z.luziatest.framework.network.toId
 import javax.inject.Inject
 
 class PlanetsRepository @Inject constructor(
@@ -15,5 +14,5 @@ class PlanetsRepository @Inject constructor(
         remotePlanetsDataSource.getPlanets(page)
 
     suspend fun getPlanet(url: String): Either<Error, Planet> =
-        remotePlanetsDataSource.getPlanet(url.toId())
+        remotePlanetsDataSource.getPlanet(url)
 }
