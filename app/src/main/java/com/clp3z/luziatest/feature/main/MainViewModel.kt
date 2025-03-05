@@ -26,7 +26,7 @@ class MainViewModel @Inject constructor(
     private val _viewState = MutableStateFlow(ViewState())
     val viewState = _viewState.asStateFlow()
 
-    private var page = 2
+    private var page = 1
 
     fun initialize() = viewModelScope.launch {
         getPlanetsUseCase(page = page).fold(
