@@ -1,9 +1,8 @@
-package com.clp3z.luziatest.framework.network
+package com.clp3z.luziatest.entity
 
-import com.clp3z.luziatest.entity.Error
 import retrofit2.HttpException
 
-fun Throwable.toError() = when (this) {
+fun Throwable.toError(): Error = when (this) {
     is HttpException -> Error.Server(code(), message() ?: stackTraceToString())
     else -> Error.Unknown(message ?: stackTraceToString())
 }

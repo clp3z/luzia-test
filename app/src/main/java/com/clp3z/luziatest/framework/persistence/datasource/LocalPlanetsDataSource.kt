@@ -9,7 +9,7 @@ interface LocalPlanetsDataSource {
 
     fun getPlanets(): Flow<List<Planet>>
 
-    fun getPlanet(id: Int): Flow<Planet>
+    fun getPlanet(url: String): Flow<Planet>
 
     suspend fun insertPlanets(planets: List<Planet>): Either<Error, Boolean>
 

@@ -62,6 +62,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providePlanetsDataSource(planetsService: PlanetsService): RemotePlanetsDataSource =
+    fun provideRemoteDataSource(planetsService: PlanetsService): RemotePlanetsDataSource =
         RemotePlanetsDataSourceImpl(planetsService)
 }

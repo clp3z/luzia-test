@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.clp3z.luziatest.framework.persistence.Database
 import com.clp3z.luziatest.framework.persistence.dao.PlanetsDAO
+import com.clp3z.luziatest.framework.persistence.datasource.LocalPlanetsDataSource
+import com.clp3z.luziatest.framework.persistence.datasource.LocalPlanetsDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,4 +30,9 @@ object PersistenceModule {
     @Provides
     @Singleton
     fun providePlanetsDAO(database: Database): PlanetsDAO = database.planetsDao()
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(planetsDAO: PlanetsDAO): LocalPlanetsDataSource =
+        LocalPlanetsDataSourceImpl(planetsDAO)
 }

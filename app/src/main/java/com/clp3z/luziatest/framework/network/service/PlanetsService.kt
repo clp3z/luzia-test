@@ -12,5 +12,5 @@ interface PlanetsService {
     suspend fun getPlanets(@Query("page") page: Int): RemotePlanetResponse
 
     @GET("/api/planets/{id}")
-    suspend fun getPlanet(@Path("id") id: Int): RemotePlanet
+    suspend fun getPlanet(@Path("id") id: String): RemotePlanet
 }

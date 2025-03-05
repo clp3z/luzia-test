@@ -6,7 +6,7 @@ import arrow.core.right
 import com.clp3z.luziatest.common.tryCall
 import com.clp3z.luziatest.entity.Error
 import com.clp3z.luziatest.entity.Planet
-import com.clp3z.luziatest.framework.network.toError
+import com.clp3z.luziatest.entity.toError
 import com.clp3z.luziatest.framework.persistence.dao.PlanetsDAO
 import com.clp3z.luziatest.framework.persistence.toLocalPlanet
 import com.clp3z.luziatest.framework.persistence.toPlanet
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class LocalPlanetsDataSourceImpl @Inject constructor(
+internal class LocalPlanetsDataSourceImpl @Inject constructor(
     private val planetsDAO: PlanetsDAO
 ) : LocalPlanetsDataSource {
 
@@ -23,8 +23,8 @@ class LocalPlanetsDataSourceImpl @Inject constructor(
         .getPlanets()
         .map { it.toPlanets() }
 
-    override fun getPlanet(id: Int): Flow<Planet> = planetsDAO
-        .getPlanet(id)
+    override fun getPlanet(url: String): Flow<Planet> = planetsDAO
+        .getPlanet(url)
         .map { it.toPlanet() }
 
     override suspend fun insertPlanets(planets: List<Planet>): Either<Error, Boolean> = tryCall (

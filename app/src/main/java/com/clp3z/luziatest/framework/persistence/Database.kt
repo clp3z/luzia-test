@@ -7,9 +7,9 @@ import com.clp3z.luziatest.framework.persistence.model.LocalPlanet
 
 @Database(
     entities = [LocalPlanet::class],
-    version = 1,
-    exportSchema = false,
+    version = 1
 )
 abstract class Database : RoomDatabase() {
+
     abstract fun planetsDao(): PlanetsDAO
 }

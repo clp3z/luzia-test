@@ -13,12 +13,12 @@ interface PlanetsDAO {
     @Query("SELECT * FROM LocalPlanet")
     fun getPlanets(): Flow<List<LocalPlanet>>
 
-    @Query("SELECT * FROM LocalPlanet WHERE id = :id")
-    fun getPlanet(id: Int): Flow<LocalPlanet>
+    @Query("SELECT * FROM LocalPlanet WHERE url = :url")
+    fun getPlanet(url: String): Flow<LocalPlanet>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlanets(items: List<LocalPlanet>)
 
-    @Query("SELECT COUNT(id) FROM LocalPlanet")
+    @Query("SELECT COUNT(url) FROM LocalPlanet")
     suspend fun planetsCount(): Int
 }
