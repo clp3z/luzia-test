@@ -27,19 +27,17 @@ class DetailViewModel @Inject constructor(
     val viewState = _viewState.asStateFlow()
 
     fun initialize(url: String) = viewModelScope.launch {
-        getPlanetUseCase(url = url).collect { result ->
-            result.fold(
-                ifLeft = { error ->
-                    _viewState.update {
-                        it.copy(error = error, isLoading = false)
-                    }
-                },
-                ifRight = { planet ->
-                    _viewState.update {
-                        it.copy(planet = planet, isLoading = false)
-                    }
+        getPlanetUseCase(url = url).fold(
+            ifLeft = { error ->
+                _viewState.update {
+                    it.copy(error = error, isLoading = false)
                 }
-            )
-        }
+            },
+            ifRight = { planet ->
+                _viewState.update {
+                    it.copy(planet = planet, isLoading = false)
+                }
+            }
+        )
     }
 }

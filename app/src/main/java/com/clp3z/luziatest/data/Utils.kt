@@ -1,4 +1,4 @@
-package com.clp3z.luziatest.framework.persistence
+package com.clp3z.luziatest.data
 
 import arrow.core.Either
 import com.clp3z.luziatest.entity.Error

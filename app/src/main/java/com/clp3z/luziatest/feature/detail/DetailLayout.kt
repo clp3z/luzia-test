@@ -1,6 +1,5 @@
 package com.clp3z.luziatest.feature.detail
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,7 +17,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.clp3z.luziatest.R
 import com.clp3z.luziatest.entity.Error
 import com.clp3z.luziatest.entity.Planet
 import com.clp3z.luziatest.feature.common.ErrorMessage
@@ -41,7 +42,7 @@ fun DetailLayout(
             TopAppBar(
                 title = {
                     Text(
-                        text = planet?.name ?: "",
+                        text = planet?.name ?: stringResource(R.string.loading),
                         color = Color.White
                     )
                 },

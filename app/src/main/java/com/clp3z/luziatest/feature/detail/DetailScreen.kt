@@ -12,7 +12,6 @@ fun DetailScreen(
     url: String,
     onUpClick: () -> Unit
 ) {
-
     val viewState by viewModel.viewState.collectAsState()
 
     LaunchedEffect(Unit) {

@@ -26,22 +26,20 @@ class MainViewModel @Inject constructor(
     private val _viewState = MutableStateFlow(ViewState())
     val viewState = _viewState.asStateFlow()
 
-    private var page = 1
+    private var page = 2
 
     fun initialize() = viewModelScope.launch {
-        getPlanetsUseCase(page = page).collect { result ->
-            result.fold(
-                ifLeft = { error ->
-                    _viewState.update {
-                        it.copy(error = error, isLoading = false)
-                    }
-                },
-                ifRight = { planets ->
-                    _viewState.update {
-                        it.copy(planets = planets, isLoading = false)
-                    }
+        getPlanetsUseCase(page = page).fold(
+            ifLeft = { error ->
+                _viewState.update {
+                    it.copy(error = error, isLoading = false)
                 }
-            )
-        }
+            },
+            ifRight = { planets ->
+                _viewState.update {
+                    it.copy(planets = planets, isLoading = false)
+                }
+            }
+        )
     }
 }
